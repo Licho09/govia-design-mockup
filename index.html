@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Govia Design — Architecture & Interiors</title>
+  <meta name="description" content="Govia Design — modern architecture and interiors. Portfolio, services, and contact." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Cpath d='M20 70 L50 20 L80 70 Z' fill='%23ffffff'/%3E%3C/svg%3E" />
+  <!-- Tailwind Play CDN for quick mockups. Replace with a build setup for production. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: {
+              50: '#f7f7f7',
+              100: '#efefef',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              800: '#1f2937',
+              900: '#0b0f14',
+            },
+            accent: {
+              500: '#3b82f6',
+            },
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Smooth fade-in */
+    .fade-in { animation: fadeIn 0.8s ease both; }
+    @keyframes fadeIn { from {opacity: 0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+  </style>
+</head>
+<body class="bg-base-50 text-base-900 antialiased">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-base-200">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <span class="inline-grid place-items-center w-9 h-9 rounded-xl bg-base-900 text-white font-semibold">G</span>
+        <span class="font-semibold tracking-wide group-hover:opacity-80">Govia Design</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#work" class="hover:opacity-70">Work</a>
+        <a href="#services" class="hover:opacity-70">Services</a>
+        <a href="#about" class="hover:opacity-70">About</a>
+        <a href="#contact" class="inline-flex items-center gap-2 rounded-full border border-base-300 px-4 py-2 hover:bg-base-100 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-b from-base-100 to-transparent"></div>
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=2000&auto=format&fit=crop" alt="Modern architectural facade" class="w-full h-[60vh] md:h-[70vh] object-cover"/>
+    </div>
+    <div class="mx-auto max-w-7xl px-6 py-24 md:py-40">
+      <div class="max-w-3xl bg-white/80 backdrop-blur rounded-2xl p-6 md:p-10 shadow-soft fade-in">
+        <h1 class="text-3xl md:text-5xl font-semibold leading-tight">Modern design for <span class="underline decoration-accent-500 decoration-4 underline-offset-4">timeless spaces</span></h1>
+        <p class="mt-4 text-base md:text-lg text-gray-700">Govia Design is a young architecture studio crafting residential and small commercial projects with clarity, warmth, and precision.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#work" class="rounded-full bg-base-900 text-white px-5 py-2.5 text-sm hover:opacity-90">View Work</a>
+          <a href="#contact" class="rounded-full border border-base-300 px-5 py-2.5 text-sm hover:bg-white">Start a Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work / Portfolio -->
+  <section id="work" class="mx-auto max-w-7xl px-6 py-20">
+    <div class="flex items-end justify-between gap-6">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold">Selected Work</h2>
+        <p class="mt-2 text-gray-600">A quick look at recent projects. (Placeholder images & titles.)</p>
+      </div>
+      <a href="#" class="hidden md:inline text-sm underline-offset-4 hover:underline">View all projects</a>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card -->
+      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
+        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop" aria-label="Open project image">
+          <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=800&auto=format&fit=crop" alt="Residential renovation" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
+          <div class="p-5">
+            <h3 class="font-medium">Hillside Residence</h3>
+            <p class="text-sm text-gray-600">Residential • 2024</p>
+          </div>
+        </button>
+      </article>
+      <!-- Card -->
+      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
+        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=800&auto=format&fit=crop" alt="Minimalist interior" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
+          <div class="p-5">
+            <h3 class="font-medium">Studio Interior</h3>
+            <p class="text-sm text-gray-600">Interior • 2024</p>
+          </div>
+        </button>
+      </article>
+      <!-- Card -->
+      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
+        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=1200&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800&auto=format&fit=crop" alt="Commercial facade" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
+          <div class="p-5">
+            <h3 class="font-medium">Neighborhood Retail</h3>
+            <p class="text-sm text-gray-600">Commercial • 2023</p>
+          </div>
+        </button>
+      </article>
+      <!-- Card -->
+      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
+        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1529429612774-45e0b8d6e479?q=80&w=1200&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1529429612774-45e0b8d6e479?q=80&w=800&auto=format&fit=crop" alt="Courtyard" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
+          <div class="p-5">
+            <h3 class="font-medium">Courtyard House</h3>
+            <p class="text-sm text-gray-600">Residential • 2023</p>
+          </div>
+        </button>
+      </article>
+      <!-- Card -->
+      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
+        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=800&auto=format&fit=crop" alt="Facade" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
+          <div class="p-5">
+            <h3 class="font-medium">Linear Facade</h3>
+            <p class="text-sm text-gray-600">Concept • 2025</p>
+          </div>
+        </button>
+      </article>
+      <!-- Card -->
+      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
+        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=1200&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=800&auto=format&fit=crop" alt="Stair detail" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
+          <div class="p-5">
+            <h3 class="font-medium">Stair Detail</h3>
+            <p class="text-sm text-gray-600">Detail • 2025</p>
+          </div>
+        </button>
+      </article>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="bg-white border-y border-base-200">
+    <div class="mx-auto max-w-7xl px-6 py-20">
+      <h2 class="text-2xl md:text-3xl font-semibold">Services</h2>
+      <p class="mt-2 text-gray-600 max-w-2xl">From concept to permit, Govia Design partners with clients to deliver thoughtful, efficient spaces.</p>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-base-200 bg-base-50 p-6">
+          <h3 class="font-medium">Residential Design</h3>
+          <p class="mt-2 text-sm text-gray-700">Custom homes, additions, and renovations with an emphasis on natural light and material honesty.</p>
+        </div>
+        <div class="rounded-2xl border border-base-200 bg-base-50 p-6">
+          <h3 class="font-medium">Small Commercial</h3>
+          <p class="mt-2 text-sm text-gray-700">Retail, studio, and office fit-outs tailored to brand and budget.</p>
+        </div>
+        <div class="rounded-2xl border border-base-200 bg-base-50 p-6">
+          <h3 class="font-medium">Permitting & Docs</h3>
+          <p class="mt-2 text-sm text-gray-700">Schematic design through permit sets, coordination, and basic visualization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="mx-auto max-w-7xl px-6 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl md:text-3xl font-semibold">About Govia Design</h2>
+        <p class="mt-4 text-gray-700 leading-relaxed">Founded by a next‑gen architect, Govia Design blends technical precision with a human‑centered approach. We value clarity, context, and the craft of building — always designing for how spaces feel, not just how they look.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#contact" class="rounded-full bg-base-900 text-white px-5 py-2.5 text-sm hover:opacity-90">Work with us</a>
+          <a href="#work" class="rounded-full border border-base-300 px-5 py-2.5 text-sm hover:bg-white">View portfolio</a>
+        </div>
+      </div>
+      <div class="aspect-[4/5] overflow-hidden rounded-2xl shadow-soft border border-base-200">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Principal portrait placeholder" class="w-full h-full object-cover"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials / Press (Placeholder) -->
+  <section class="bg-base-900 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <figure class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <blockquote class="text-sm opacity-90">“Coming soon — client feedback snippet or press blurb.”</blockquote>
+          <figcaption class="mt-3 text-xs opacity-70">— Client Name</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <blockquote class="text-sm opacity-90">“Coming soon — client feedback snippet or press blurb.”</blockquote>
+          <figcaption class="mt-3 text-xs opacity-70">— Client Name</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <blockquote class="text-sm opacity-90">“Coming soon — client feedback snippet or press blurb.”</blockquote>
+          <figcaption class="mt-3 text-xs opacity-70">— Client Name</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-7xl px-6 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold">Start a Project</h2>
+        <p class="mt-2 text-gray-700">Tell us a little about your project and we’ll get back to you.</p>
+        <ul class="mt-6 space-y-2 text-sm text-gray-700">
+          <li>📍 Based in [City], working nationwide</li>
+          <li>📧 hello@goviadesign.com</li>
+          <li>🕘 Mon–Fri, 9am–5pm</li>
+        </ul>
+      </div>
+      <form class="rounded-2xl border border-base-200 bg-white p-6 shadow-soft" onsubmit="event.preventDefault(); alert('Demo only — connect to email or backend later.');">
+        <label class="block text-sm">Name
+          <input required class="mt-1 w-full rounded-xl border border-base-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent-500" placeholder="Your name"/>
+        </label>
+        <label class="block text-sm mt-4">Email
+          <input type="email" required class="mt-1 w-full rounded-xl border border-base-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent-500" placeholder="you@email.com"/>
+        </label>
+        <label class="block text-sm mt-4">Message
+          <textarea required rows="4" class="mt-1 w-full rounded-xl border border-base-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent-500" placeholder="Tell us about your project..."></textarea>
+        </label>
+        <button class="mt-5 w-full rounded-xl bg-base-900 text-white px-5 py-3 text-sm hover:opacity-90">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-base-200 bg-white">
+    <div class="mx-auto max-w-7xl px-6 py-10 text-sm text-gray-600 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© <span id="year"></span> Govia Design. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:underline">TikTok</a>
+        <a href="#" class="hover:underline">Instagram</a>
+        <a href="#" class="hover:underline">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple Lightbox Modal for portfolio images -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/70 p-6">
+    <button id="lightboxClose" class="absolute top-4 right-4 rounded-full bg-white/10 text-white w-10 h-10 grid place-items-center" aria-label="Close">✕</button>
+    <img id="lightboxImg" alt="Project image" class="max-h-[90vh] mx-auto rounded-xl shadow-soft" />
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightbox logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('[data-lightbox-src]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const src = btn.getAttribute('data-lightbox-src');
+        lightboxImg.src = src;
+        lightbox.classList.remove('hidden');
+      });
+    });
+    closeBtn.addEventListener('click', () => lightbox.classList.add('hidden'));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
