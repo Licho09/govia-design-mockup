@@ -615,11 +615,58 @@
 <body class="bg-white text-primary-900">
   <!-- Header / Nav -->
   <header id="header" class="sticky top-0 z-30 bg-primary-50 backdrop-blur transition-transform duration-300">
-    <div class="mx-auto max-w-6xl px-4 py-8 md:pl-6 md:pr-0 md:py-16 flex items-center justify-between">
-      <!-- Mobile menu button -->
-      <button id="mobileMenuBtn" class="md:hidden text-primary-900 text-2xl font-bold">
-        ☰
-      </button>
+    <div class="mx-auto max-w-6xl px-4 py-4 md:pl-6 md:pr-0 md:py-16 flex items-center justify-center md:justify-end">
+      <!-- Mobile Navigation - Always visible -->
+      <nav class="flex md:hidden items-center gap-4 text-sm title-entrance" style="animation-delay: 2.5s;">
+        <a href="#work" class="nav-link text-sm">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>W</span><span>o</span><span>r</span><span>k</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>W</span><span>o</span><span>r</span><span>k</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
+        <a href="#" class="nav-link text-sm" onclick="return false;" style="pointer-events: none; opacity: 0.5;">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
+        <a href="#" class="nav-link text-sm" onclick="return false;" style="pointer-events: none; opacity: 0.5;">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
+        <a href="#" class="nav-link text-sm" onclick="return false;" style="pointer-events: none; opacity: 0.5;">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
+      </nav>
       
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-16 text-sm title-entrance" style="margin-left: auto; margin-right: -20px; transform: translateX(20px); animation-delay: 2.5s;">
@@ -673,23 +720,24 @@
         </a>
       </nav>
     </div>
-    
-    <!-- Mobile Navigation Menu -->
-    <div id="mobileMenu" class="md:hidden hidden bg-primary-50 border-t border-primary-200">
-      <div class="px-4 py-6 space-y-4">
-        <a href="#work" class="block text-lg font-medium text-primary-900 hover:text-primary-600 transition-colors">Work</a>
-        <a href="#" class="block text-lg font-medium text-primary-500 cursor-not-allowed">Services</a>
-        <a href="#" class="block text-lg font-medium text-primary-500 cursor-not-allowed">About</a>
-        <a href="#" class="block text-lg font-medium text-primary-500 cursor-not-allowed">Contact</a>
-      </div>
-    </div>
   </header>
 
   <!-- Hero -->
   <section id="hero" class="relative overflow-hidden bg-primary-50 z-20">
     <div class="mx-auto max-w-full px-4 pt-20 pb-32 md:pt-32 md:pb-64 lg:pt-48 lg:pb-80 flex items-center justify-center">
       <div class="text-center w-full">
-        <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] font-bold leading-none text-primary-900 mb-6 md:mb-8 hero-title" style="font-family: 'Sofia Sans Condensed', sans-serif; letter-spacing: -0.02em;">
+        <!-- Mobile Layout: GOVIA on top, DESIGN below -->
+        <div class="md:hidden">
+          <h1 class="text-5xl sm:text-6xl font-bold leading-none text-primary-900 mb-2 hero-title" style="font-family: 'Sofia Sans Condensed', sans-serif; letter-spacing: -0.02em;">
+            <span class="hero-letter">G</span><span class="hero-letter">O</span><span class="hero-letter">V</span><span class="hero-letter">I</span><span class="hero-letter">A</span>
+          </h1>
+          <h1 class="text-5xl sm:text-6xl font-bold leading-none text-primary-900 mb-6 hero-title" style="font-family: 'Sofia Sans Condensed', sans-serif; letter-spacing: -0.02em;">
+            <span class="hero-letter">D</span><span class="hero-letter">E</span><span class="hero-letter">S</span><span class="hero-letter">I</span><span class="hero-letter">G</span><span class="hero-letter">N</span>
+          </h1>
+        </div>
+        
+        <!-- Desktop Layout: GOVIA DESIGN on same line -->
+        <h1 class="hidden md:block text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] font-bold leading-none text-primary-900 mb-8 hero-title" style="font-family: 'Sofia Sans Condensed', sans-serif; letter-spacing: -0.02em;">
           <span class="hero-letter">G</span><span class="hero-letter">O</span><span class="hero-letter">V</span><span class="hero-letter">I</span><span class="hero-letter">A</span><span class="hero-letter">&nbsp;</span><span class="hero-letter">D</span><span class="hero-letter">E</span><span class="hero-letter">S</span><span class="hero-letter">I</span><span class="hero-letter">G</span><span class="hero-letter">N</span>
         </h1>
         <p class="text-base sm:text-lg text-primary-600 mb-6 md:mb-8 max-w-2xl mx-auto hero-subtitle title-entrance px-4" style="font-family: 'Spline Sans Mono', monospace; animation-delay: 1.5s;">Creating spaces that honor nature, using sustainable materials and eco-friendly practices.</p>
@@ -1039,33 +1087,20 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hero title startup animation
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-      // Trigger animation after a short delay
+    // Hero title startup animation - handle both mobile and desktop
+    const heroTitles = document.querySelectorAll('.hero-title');
+    if (heroTitles.length > 0) {
+      // Trigger animation after a short delay for all hero titles
       setTimeout(() => {
-        heroTitle.classList.add('animate');
+        heroTitles.forEach(title => {
+          title.classList.add('animate');
+        });
       }, 500);
     }
 
     // Services, About, and Contact modals are disabled
 
-    // Mobile menu functionality
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-      
-      // Close mobile menu when clicking on a link
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
-          mobileMenu.classList.add('hidden');
-        }
-      });
-    }
+    // Mobile navigation is now always visible, no menu toggle needed
 
     // Scroll animations with direction detection
     let lastScrollY = window.scrollY;
