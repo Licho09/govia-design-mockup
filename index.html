@@ -5,246 +5,999 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Govia Design — Architecture & Interiors</title>
   <meta name="description" content="Govia Design — modern architecture and interiors. Portfolio, services, and contact." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Cpath d='M20 70 L50 20 L80 70 Z' fill='%23ffffff'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232d251c'/%3E%3Cpath d='M20 70 L50 20 L80 70 Z' fill='%23f5f3f0'/%3E%3C/svg%3E" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Architects+Daughter&family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=More+Sugar:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Tailwind Play CDN for quick mockups. Replace with a build setup for production. -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            base: {
-              50: '#f7f7f7',
-              100: '#efefef',
-              200: '#e5e5e5',
-              300: '#d4d4d4',
-              800: '#1f2937',
-              900: '#0b0f14',
-            },
-            accent: {
-              500: '#3b82f6',
-            },
+            primary: {
+              50: '#f8f9fa',
+              100: '#f1f3f4',
+              200: '#e8eaed',
+              300: '#dadce0',
+              400: '#bdc1c6',
+              500: '#9aa0a6',
+              600: '#80868b',
+              700: '#5f6368',
+              800: '#3c4043',
+              900: '#202124',
+            }
+          },
+          fontFamily: {
+            'sans': ['Open Sans', 'Arial', 'sans-serif'],
+          },
+          fontSize: {
+            'base': '18px',
+            'lg': '20px',
+            'xl': '24px',
+            '2xl': '30px',
+            '3xl': '36px',
+            '4xl': '42px',
+          },
+          lineHeight: {
+            'base': '1.67',
           },
           boxShadow: {
-            soft: '0 10px 30px rgba(0,0,0,0.08)'
+            'natural': '6px 6px 9px rgba(0, 0, 0, 0.2)',
+            'deep': '12px 12px 50px rgba(0, 0, 0, 0.4)',
+            'sharp': '6px 6px 0px rgba(0, 0, 0, 0.2)',
           }
         }
       }
     }
   </script>
   <style>
-    /* Smooth fade-in */
-    .fade-in { animation: fadeIn 0.8s ease both; }
-    @keyframes fadeIn { from {opacity: 0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+    /* Vida Design Studio inspired styles */
+    *, :after, :before {
+      box-sizing: inherit;
+    }
+    
+    body, html {
+      font-size: 18px;
+      line-height: 1.67;
+      font-family: "Open Sans", Arial, sans-serif;
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body, html, pre {
+      color: #292a2c;
+      word-wrap: break-word;
+    }
+    
+    /* Lenis smooth scrolling will handle this */
+    
+        /* Optimize for smooth scrolling */
+        .scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .about-title, .hero-title {
+          will-change: transform, opacity;
+        }
+        
+        /* Project image animation - scale up on scroll */
+        .project-img {
+          transform: scale(0.9);
+          opacity: 0.8;
+          transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .project-img.animate {
+          transform: scale(1);
+          opacity: 1;
+        }
+    
+    a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    
+        /* Smooth fade-in */
+        .fade-in { animation: fadeIn 0.8s ease both; }
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+        
+        /* Title entrance animation */
+        .title-entrance {
+          opacity: 0;
+          transform: translateY(-30px);
+          animation: titleEntrance 1.2s ease-out forwards;
+        }
+        
+        @keyframes titleEntrance {
+          0% {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Subtitle slide up animation */
+        .subtitle-slide-up {
+          opacity: 0;
+          transform: translateY(100px);
+          animation: subtitleSlideUp 1.5s ease-out forwards;
+        }
+        
+        @keyframes subtitleSlideUp {
+          0% {
+            opacity: 0;
+            transform: translateY(100px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        /* Deep slide up animation for subtitle and button */
+        .deep-slide-up {
+          opacity: 0;
+          transform: translateY(80px);
+          animation: deepSlideUp 1.4s ease-out forwards;
+        }
+        
+        @keyframes deepSlideUp {
+          0% {
+            opacity: 0;
+            transform: translateY(80px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        /* GOVIA DESIGN slide from bottom right to top left with typewriter effect */
+        .title-slide {
+          opacity: 0;
+          transform: translate(100px, 100px);
+          animation: titleSlide 1.5s ease-out forwards;
+        }
+        
+        @keyframes titleSlide {
+          0% {
+            opacity: 0;
+            transform: translate(100px, 100px);
+          }
+          100% {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
+        }
+        
+        /* Typewriter cursor effect */
+        .typewriter {
+          overflow: hidden;
+          border-right: 3px solid #202124;
+          white-space: nowrap;
+          animation: typewriter 2s steps(12, end) forwards, blink-cursor 0.75s step-end infinite;
+          animation-delay: 0.5s;
+        }
+        
+        @keyframes typewriter {
+          from { width: 0; }
+          to { width: 100%; }
+        }
+        
+        @keyframes blink-cursor {
+          from, to { border-color: transparent; }
+          50% { border-color: #202124; }
+        }
+        
+        /* Smooth slide from bottom right to top left */
+        .typewriter-slide {
+          opacity: 0;
+          transform: translate(100px, 100px);
+          animation: smoothSlide 1.8s ease-out forwards;
+        }
+        
+        @keyframes smoothSlide {
+          0% {
+            opacity: 0;
+            transform: translate(100px, 100px);
+          }
+          100% {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
+        }
+        
+        
+        /* Header scroll animation */
+        .header-scrolled {
+          transform: translateY(-100%);
+          transition: transform 0.3s ease-in-out;
+        }
+        
+        /* Services Modal slide from right animation */
+        .modal-slide-right {
+          transform: translateX(100%);
+          transition: transform 0.4s ease-out;
+        }
+        
+        .modal-slide-right.show {
+          transform: translateX(0);
+        }
+
+        /* Scroll animations */
+        .scroll-fade-in {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .scroll-fade-in.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .scroll-fade-in.visible-up {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .scroll-slide-left {
+          opacity: 0;
+          transform: translateX(50px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .scroll-slide-left.visible {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        
+        .scroll-slide-left.visible-up {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        
+        .scroll-slide-right {
+          opacity: 0;
+          transform: translateX(-50px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .scroll-slide-right.visible {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        
+        .scroll-slide-right.visible-up {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        
+        /* Scroll up animations */
+        .scroll-fade-in.scroll-up {
+          transform: translateY(-30px);
+        }
+        
+        .scroll-slide-left.scroll-up {
+          transform: translateX(-50px);
+        }
+        
+        .scroll-slide-right.scroll-up {
+          transform: translateX(50px);
+        }
+
+        /* Navigation letter animation */
+        .nav-link {
+          align-items: center;
+          display: flex;
+          font-family: 'Spline Sans Mono', monospace;
+          font-size: 1.2rem;
+          font-weight: 300;
+          letter-spacing: 0.1rem;
+          line-height: 99%;
+          overflow: hidden;
+          padding: 0 1rem;
+          position: relative;
+          text-decoration: none;
+          text-transform: uppercase;
+          transition: .5s ease;
+          white-space: nowrap;
+          color: inherit;
+        }
+
+        .nav-link:hover {
+          text-decoration: none !important;
+          color: inherit !important;
+          border-bottom: none !important;
+          outline: none !important;
+        }
+
+        .nav-link:focus {
+          text-decoration: none !important;
+          color: inherit !important;
+          border-bottom: none !important;
+          outline: none !important;
+        }
+
+        .nav-link:visited {
+          text-decoration: none !important;
+          color: inherit !important;
+        }
+
+        .nav-link:active {
+          text-decoration: none !important;
+          color: inherit !important;
+        }
+
+        .text-content {
+          position: relative;
+          overflow: hidden;
+          display: inline-block;
+        }
+
+        .text-content .original,
+        .text-content .clone {
+          display: inline-block;
+          transition: transform 0.3s ease;
+        }
+
+        .text-content .clone {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: translateY(100%);
+        }
+
+        .nav-link:hover .text-content .original {
+          transform: translateY(-100%);
+        }
+
+        .nav-link:hover .text-content .clone {
+          transform: translateY(0);
+        }
+
+        /* Bracket expansion animation */
+        .bracket-left,
+        .bracket-right {
+          transition: transform 0.3s ease;
+          display: inline-block;
+        }
+
+        .nav-link:hover .bracket-left {
+          transform: translateX(-15px);
+        }
+
+        .nav-link:hover .bracket-right {
+          transform: translateX(15px);
+        }
+
+        /* Remove all link decorations globally */
+        a {
+          text-decoration: none !important;
+        }
+
+        a:hover, a:focus, a:visited, a:active {
+          text-decoration: none !important;
+          border-bottom: none !important;
+          outline: none !important;
+        }
+
+        /* Hero letter animation - middle out like projects text */
+        .hero-letter {
+          display: inline-block;
+          transform: translateY(-200%);
+          opacity: 1;
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hero-title.animate .hero-letter:nth-child(1) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.4s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(2) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.3s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(3) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.2s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(4) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.1s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(5) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(6) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(7) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.1s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(8) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.2s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(9) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.3s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(10) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.4s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(11) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.35s; 
+        }
+        .hero-title.animate .hero-letter:nth-child(12) { 
+          transform: translate3d(0px, -100px, 0px);
+          transition-delay: 0.4s; 
+        }
+        
+        .hero-subtitle {
+          /* Animation handled by title-entrance class */
+        }
+        
+        .hero-button {
+          opacity: 1;
+          transform: translateY(-60%);
+          animation: heroButtonSlideDown 1s ease-out forwards;
+          animation-delay: 1.8s;
+        }
+        
+        
+        @keyframes heroButtonSlideDown {
+          to {
+            transform: translateY(0);
+          }
+        }
+
+        /* Animation title styles */
+        .animation-title span .letter {
+          display: inline-block;
+          font-family: 'Sofia Sans Condensed', sans-serif;
+          font-weight: 700;
+          line-height: 99%;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        .about-title .letter {
+          font-size: 8rem;
+          letter-spacing: -0.5rem;
+          display: inline-block;
+          transform: translateY(-200%);
+          opacity: 1;
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .about-title.animate .letter {
+          opacity: 1;
+        }
+
+        .about-title.animate .letter:nth-child(1) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0.3s; 
+        }
+        .about-title.animate .letter:nth-child(2) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0.2s; 
+        }
+        .about-title.animate .letter:nth-child(3) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0.1s; 
+        }
+        .about-title.animate .letter:nth-child(4) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0s; 
+        }
+        .about-title.animate .letter:nth-child(5) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0.1s; 
+        }
+        .about-title.animate .letter:nth-child(6) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0.2s; 
+        }
+        .about-title.animate .letter:nth-child(7) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0.3s; 
+        }
+        .about-title.animate .letter:nth-child(8) { 
+          transform: translate3d(0px, 0px, 0px);
+          transition-delay: 0.4s; 
+        }
+
+        /* Reverse animation for scroll up */
+        .about-title.animate-reverse .letter:nth-child(1) { 
+          transform: translateY(-120%);
+          transition-delay: 0s; 
+        }
+        .about-title.animate-reverse .letter:nth-child(2) { 
+          transform: translateY(-120%);
+          transition-delay: 0.1s; 
+        }
+        .about-title.animate-reverse .letter:nth-child(3) { 
+          transform: translateY(-120%);
+          transition-delay: 0.2s; 
+        }
+        .about-title.animate-reverse .letter:nth-child(4) { 
+          transform: translateY(-120%);
+          transition-delay: 0.3s; 
+        }
+        .about-title.animate-reverse .letter:nth-child(5) { 
+          transform: translateY(-120%);
+          transition-delay: 0.2s; 
+        }
+        .about-title.animate-reverse .letter:nth-child(6) { 
+          transform: translateY(-120%);
+          transition-delay: 0.1s; 
+        }
+        .about-title.animate-reverse .letter:nth-child(7) { 
+          transform: translateY(-120%);
+          transition-delay: 0s; 
+        }
+        .about-title.animate-reverse .letter:nth-child(8) { 
+          transform: translateY(-120%);
+          transition-delay: 0s; 
+        }
+
+        /* Scroll up animation - sliding behind paper effect */
+        .about-title.animate-up .letter {
+          transform: translateY(-200%);
+          opacity: 1;
+        }
+        
+        /* Scroll up animation with outer-to-inner sequence */
+        .about-title.animate-up .letter:nth-child(1) { 
+          transform: translateY(-200%);
+          transition-delay: 0s; 
+        }
+        .about-title.animate-up .letter:nth-child(2) { 
+          transform: translateY(-200%);
+          transition-delay: 0.1s; 
+        }
+        .about-title.animate-up .letter:nth-child(3) { 
+          transform: translateY(-200%);
+          transition-delay: 0.2s; 
+        }
+        .about-title.animate-up .letter:nth-child(4) { 
+          transform: translateY(-200%);
+          transition-delay: 0.3s; 
+        }
+        .about-title.animate-up .letter:nth-child(5) { 
+          transform: translateY(-200%);
+          transition-delay: 0.2s; 
+        }
+        .about-title.animate-up .letter:nth-child(6) { 
+          transform: translateY(-200%);
+          transition-delay: 0.1s; 
+        }
+        .about-title.animate-up .letter:nth-child(7) { 
+          transform: translateY(-200%);
+          transition-delay: 0s; 
+        }
+        .about-title.animate-up .letter:nth-child(8) { 
+          transform: translateY(-200%);
+          transition-delay: 0s; 
+        }
   </style>
 </head>
-<body class="bg-base-50 text-base-900 antialiased">
+<body class="bg-white text-primary-900">
   <!-- Header / Nav -->
-  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-base-200">
-    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <span class="inline-grid place-items-center w-9 h-9 rounded-xl bg-base-900 text-white font-semibold">G</span>
-        <span class="font-semibold tracking-wide group-hover:opacity-80">Govia Design</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm">
-        <a href="#work" class="hover:opacity-70">Work</a>
-        <a href="#services" class="hover:opacity-70">Services</a>
-        <a href="#about" class="hover:opacity-70">About</a>
-        <a href="#contact" class="inline-flex items-center gap-2 rounded-full border border-base-300 px-4 py-2 hover:bg-base-100 transition">Contact</a>
+  <header id="header" class="sticky top-0 z-30 bg-primary-50 backdrop-blur transition-transform duration-300">
+    <div class="mx-auto max-w-6xl pl-6 pr-0 py-16 flex items-center justify-end">
+      <nav class="hidden md:flex items-center gap-16 text-sm title-entrance" style="margin-left: auto; margin-right: -20px; transform: translateX(20px); animation-delay: 2.5s;">
+        <a href="#work" class="nav-link text-base">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>&nbsp;</span><span>W</span><span>o</span><span>r</span><span>k</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>&nbsp;</span><span>W</span><span>o</span><span>r</span><span>k</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
+        <a href="#" class="nav-link text-base" onclick="return false;" style="pointer-events: none; opacity: 0.5;">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>&nbsp;</span><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>&nbsp;</span><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
+        <a href="#" class="nav-link text-base" onclick="return false;" style="pointer-events: none; opacity: 0.5;">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>&nbsp;</span><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>&nbsp;</span><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
+        <a href="#" class="nav-link text-base" onclick="return false;" style="pointer-events: none; opacity: 0.5;">
+          <span class="bracket-left">[</span>
+          <span class="text-content">
+            <span class="original">
+              <span>&nbsp;</span><span>&nbsp;</span><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+            <span class="clone" aria-hidden="true">
+              <span>&nbsp;</span><span>&nbsp;</span><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span><span>&nbsp;</span><span>&nbsp;</span>
+            </span>
+          </span>
+          <span class="bracket-right">]</span>
+        </a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10">
-      <div class="absolute inset-0 bg-gradient-to-b from-base-100 to-transparent"></div>
-      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=2000&auto=format&fit=crop" alt="Modern architectural facade" class="w-full h-[60vh] md:h-[70vh] object-cover"/>
-    </div>
-    <div class="mx-auto max-w-7xl px-6 py-24 md:py-40">
-      <div class="max-w-3xl bg-white/80 backdrop-blur rounded-2xl p-6 md:p-10 shadow-soft fade-in">
-        <h1 class="text-3xl md:text-5xl font-semibold leading-tight">Modern design for <span class="underline decoration-accent-500 decoration-4 underline-offset-4">timeless spaces</span></h1>
-        <p class="mt-4 text-base md:text-lg text-gray-700">Govia Design is a young architecture studio crafting residential and small commercial projects with clarity, warmth, and precision.</p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#work" class="rounded-full bg-base-900 text-white px-5 py-2.5 text-sm hover:opacity-90">View Work</a>
-          <a href="#contact" class="rounded-full border border-base-300 px-5 py-2.5 text-sm hover:bg-white">Start a Project</a>
-        </div>
+  <section id="hero" class="relative overflow-hidden bg-primary-50 z-20">
+    <div class="mx-auto max-w-full px-4 pt-32 pb-64 md:pt-48 md:pb-80 flex items-center justify-center">
+      <div class="text-center w-full">
+        <h1 class="text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-bold leading-none text-primary-900 mb-8 hero-title" style="font-family: 'Sofia Sans Condensed', sans-serif; letter-spacing: -0.02em;">
+          <span class="hero-letter">G</span><span class="hero-letter">O</span><span class="hero-letter">V</span><span class="hero-letter">I</span><span class="hero-letter">A</span><span class="hero-letter">&nbsp;</span><span class="hero-letter">D</span><span class="hero-letter">E</span><span class="hero-letter">S</span><span class="hero-letter">I</span><span class="hero-letter">G</span><span class="hero-letter">N</span>
+        </h1>
+        <p class="text-lg text-primary-600 mb-8 max-w-2xl mx-auto hero-subtitle title-entrance" style="font-family: 'Spline Sans Mono', monospace; animation-delay: 1.5s;">Creating spaces that honor nature, using sustainable materials and eco-friendly practices.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Projects Title Section -->
+  <section class="pt-20 pb-2 flex items-center justify-center relative bg-primary-50">
+    <div class="text-center scroll-fade-in relative z-10">
+      <h2 class="about-title animation-title" data-animated="true">
+        <span style="display: inline-block;">
+          <span class="letter">P</span><span class="letter">r</span><span class="letter">o</span><span class="letter">j</span><span class="letter">e</span><span class="letter">c</span><span class="letter">t</span><span class="letter">s</span>
+        </span>
+      </h2>
     </div>
   </section>
 
   <!-- Work / Portfolio -->
-  <section id="work" class="mx-auto max-w-7xl px-6 py-20">
-    <div class="flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-semibold">Selected Work</h2>
-        <p class="mt-2 text-gray-600">A quick look at recent projects. (Placeholder images & titles.)</p>
-      </div>
-      <a href="#" class="hidden md:inline text-sm underline-offset-4 hover:underline">View all projects</a>
-    </div>
+  <section id="work" class="pt-2 pb-20 bg-primary-50">
 
-    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-4">
       <!-- Card -->
-      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
-        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop" aria-label="Open project image">
-          <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=800&auto=format&fit=crop" alt="Residential renovation" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
-          <div class="p-5">
-            <h3 class="font-medium">Hillside Residence</h3>
-            <p class="text-sm text-gray-600">Residential • 2024</p>
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="2-12.jpg" alt="Modern forest cabins" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Forest Retreat</h3>
+                <p class="text-sm opacity-90">Sustainable • 2024</p>
+              </div>
+            </div>
           </div>
-        </button>
+        </a>
       </article>
       <!-- Card -->
-      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
-        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=800&auto=format&fit=crop" alt="Minimalist interior" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
-          <div class="p-5">
-            <h3 class="font-medium">Studio Interior</h3>
-            <p class="text-sm text-gray-600">Interior • 2024</p>
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="design-and-architecture-boomerang-house-mj-kanny-architect-main.jpg" alt="Modular forest house" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Stone Sanctuary</h3>
+                <p class="text-sm opacity-90">Interior • 2024</p>
+              </div>
+            </div>
           </div>
-        </button>
+        </a>
       </article>
       <!-- Card -->
-      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
-        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=800&auto=format&fit=crop" alt="Commercial facade" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
-          <div class="p-5">
-            <h3 class="font-medium">Neighborhood Retail</h3>
-            <p class="text-sm text-gray-600">Commercial • 2023</p>
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="cfab0a22-82c9-42f0-8d3a-01cd7301e804d03b6170b2c87fa279_Ford_Foundation_Building_1.jpg" alt="Forest boardwalk" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Green Cafe</h3>
+                <p class="text-sm opacity-90">Commercial • 2023</p>
+              </div>
+            </div>
           </div>
-        </button>
+        </a>
       </article>
       <!-- Card -->
-      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
-        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1529429612774-45e0b8d6e479?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1529429612774-45e0b8d6e479?q=80&w=800&auto=format&fit=crop" alt="Courtyard" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
-          <div class="p-5">
-            <h3 class="font-medium">Courtyard House</h3>
-            <p class="text-sm text-gray-600">Residential • 2023</p>
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="TROPICAL-FEAT-PHOTO.jpg" alt="Modern forest house" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Garden House</h3>
+                <p class="text-sm opacity-90">Residential • 2023</p>
+              </div>
+            </div>
           </div>
-        </button>
+        </a>
       </article>
       <!-- Card -->
-      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
-        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=800&auto=format&fit=crop" alt="Facade" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
-          <div class="p-5">
-            <h3 class="font-medium">Linear Facade</h3>
-            <p class="text-sm text-gray-600">Concept • 2025</p>
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="Forest2-11_DSC2080a.jpg" alt="Angular forest house" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Earth House</h3>
+                <p class="text-sm opacity-90">Concept • 2025</p>
+              </div>
+            </div>
           </div>
-        </button>
+        </a>
       </article>
       <!-- Card -->
-      <article class="group rounded-2xl overflow-hidden bg-white border border-base-200 shadow-soft">
-        <button class="block w-full text-left" data-lightbox-src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=800&auto=format&fit=crop" alt="Stair detail" class="h-56 w-full object-cover group-hover:scale-105 transition"/>
-          <div class="p-5">
-            <h3 class="font-medium">Stair Detail</h3>
-            <p class="text-sm text-gray-600">Detail • 2025</p>
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="maxresdefault.jpg" alt="Modern forest house" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Wood Detail</h3>
+                <p class="text-sm opacity-90">Detail • 2025</p>
+              </div>
+            </div>
           </div>
-        </button>
+        </a>
+      </article>
+      <!-- Card -->
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="metalocus_bloc_the-forest-house_09_p.jpg" alt="Modern forest cabins" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Forest Cabins</h3>
+                <p class="text-sm opacity-90">Residential • 2024</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+      <!-- Card -->
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="achiote-villas-formafatal_2.jpg" alt="Modular forest house" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Modular House</h3>
+                <p class="text-sm opacity-90">Sustainable • 2024</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+      <!-- Card -->
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="caribbean-courtyard-villa-alta-129.jpg" alt="Forest boardwalk" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Forest Path</h3>
+                <p class="text-sm opacity-90">Landscape • 2024</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+      <!-- Card -->
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="Diseño-sin-título-(1)-(1).jpg" alt="Modern forest house" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Forest House</h3>
+                <p class="text-sm opacity-90">Residential • 2024</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+      <!-- Card -->
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" alt="Angular forest house" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Angular Retreat</h3>
+                <p class="text-sm opacity-90">Concept • 2024</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+      <!-- Card -->
+      <article class="group relative overflow-hidden">
+        <a href="#" class="block">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="_DSC8237.jpg" alt="Modern forest cabins" class="w-full h-[450px] object-cover project-img group-hover:scale-105 transition-all duration-[1.2s] ease"/>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div class="text-center text-white">
+                <h3 class="text-2xl font-medium mb-2" style="font-family: 'Architects Daughter', cursive;">Mountain Lodge</h3>
+                <p class="text-sm opacity-90">Residential • 2024</p>
+              </div>
+            </div>
+          </div>
+        </a>
       </article>
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="bg-white border-y border-base-200">
-    <div class="mx-auto max-w-7xl px-6 py-20">
-      <h2 class="text-2xl md:text-3xl font-semibold">Services</h2>
-      <p class="mt-2 text-gray-600 max-w-2xl">From concept to permit, Govia Design partners with clients to deliver thoughtful, efficient spaces.</p>
 
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="rounded-2xl border border-base-200 bg-base-50 p-6">
-          <h3 class="font-medium">Residential Design</h3>
-          <p class="mt-2 text-sm text-gray-700">Custom homes, additions, and renovations with an emphasis on natural light and material honesty.</p>
-        </div>
-        <div class="rounded-2xl border border-base-200 bg-base-50 p-6">
-          <h3 class="font-medium">Small Commercial</h3>
-          <p class="mt-2 text-sm text-gray-700">Retail, studio, and office fit-outs tailored to brand and budget.</p>
-        </div>
-        <div class="rounded-2xl border border-base-200 bg-base-50 p-6">
-          <h3 class="font-medium">Permitting & Docs</h3>
-          <p class="mt-2 text-sm text-gray-700">Schematic design through permit sets, coordination, and basic visualization.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- About -->
-  <section id="about" class="mx-auto max-w-7xl px-6 py-20">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-      <div class="md:col-span-2">
-        <h2 class="text-2xl md:text-3xl font-semibold">About Govia Design</h2>
-        <p class="mt-4 text-gray-700 leading-relaxed">Founded by a next‑gen architect, Govia Design blends technical precision with a human‑centered approach. We value clarity, context, and the craft of building — always designing for how spaces feel, not just how they look.</p>
-        <div class="mt-6 flex gap-3">
-          <a href="#contact" class="rounded-full bg-base-900 text-white px-5 py-2.5 text-sm hover:opacity-90">Work with us</a>
-          <a href="#work" class="rounded-full border border-base-300 px-5 py-2.5 text-sm hover:bg-white">View portfolio</a>
-        </div>
-      </div>
-      <div class="aspect-[4/5] overflow-hidden rounded-2xl shadow-soft border border-base-200">
-        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Principal portrait placeholder" class="w-full h-full object-cover"/>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Testimonials / Press (Placeholder) -->
-  <section class="bg-base-900 text-white">
-    <div class="mx-auto max-w-7xl px-6 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <figure class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <blockquote class="text-sm opacity-90">“Coming soon — client feedback snippet or press blurb.”</blockquote>
-          <figcaption class="mt-3 text-xs opacity-70">— Client Name</figcaption>
-        </figure>
-        <figure class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <blockquote class="text-sm opacity-90">“Coming soon — client feedback snippet or press blurb.”</blockquote>
-          <figcaption class="mt-3 text-xs opacity-70">— Client Name</figcaption>
-        </figure>
-        <figure class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <blockquote class="text-sm opacity-90">“Coming soon — client feedback snippet or press blurb.”</blockquote>
-          <figcaption class="mt-3 text-xs opacity-70">— Client Name</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="mx-auto max-w-7xl px-6 py-20">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-semibold">Start a Project</h2>
-        <p class="mt-2 text-gray-700">Tell us a little about your project and we’ll get back to you.</p>
-        <ul class="mt-6 space-y-2 text-sm text-gray-700">
-          <li>📍 Based in [City], working nationwide</li>
-          <li>📧 hello@goviadesign.com</li>
-          <li>🕘 Mon–Fri, 9am–5pm</li>
-        </ul>
-      </div>
-      <form class="rounded-2xl border border-base-200 bg-white p-6 shadow-soft" onsubmit="event.preventDefault(); alert('Demo only — connect to email or backend later.');">
-        <label class="block text-sm">Name
-          <input required class="mt-1 w-full rounded-xl border border-base-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent-500" placeholder="Your name"/>
-        </label>
-        <label class="block text-sm mt-4">Email
-          <input type="email" required class="mt-1 w-full rounded-xl border border-base-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent-500" placeholder="you@email.com"/>
-        </label>
-        <label class="block text-sm mt-4">Message
-          <textarea required rows="4" class="mt-1 w-full rounded-xl border border-base-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent-500" placeholder="Tell us about your project..."></textarea>
-        </label>
-        <button class="mt-5 w-full rounded-xl bg-base-900 text-white px-5 py-3 text-sm hover:opacity-90">Send</button>
-      </form>
+  <section class="bg-primary-50">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <!-- Content will be added later -->
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-base-200 bg-white">
-    <div class="mx-auto max-w-7xl px-6 py-10 text-sm text-gray-600 flex flex-col md:flex-row items-center justify-between gap-4">
+  <footer class="border-t border-primary-200 bg-primary-50">
+    <div class="mx-auto max-w-6xl px-6 py-12 text-sm text-primary-600 flex flex-col md:flex-row items-center justify-between gap-4">
       <p>© <span id="year"></span> Govia Design. All rights reserved.</p>
-      <div class="flex items-center gap-4">
-        <a href="#" class="hover:underline">TikTok</a>
-        <a href="#" class="hover:underline">Instagram</a>
-        <a href="#" class="hover:underline">LinkedIn</a>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-primary-900 transition-colors">Instagram</a>
+        <a href="#" class="hover:text-primary-900 transition-colors">LinkedIn</a>
       </div>
     </div>
   </footer>
+
+  <!-- Services Modal -->
+  <div id="servicesModal" class="fixed inset-0 z-50 hidden bg-black/20 backdrop-blur-sm">
+    <div class="flex items-start justify-end h-screen">
+      <div class="bg-black/60 shadow-2xl w-1/2 h-screen overflow-y-auto modal-slide-right">
+        <div class="p-8">
+          <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-medium text-white">Services</h2>
+            <button id="servicesClose" class="text-white hover:text-gray-300 text-2xl font-bold" aria-label="Close">✕</button>
+          </div>
+          <p class="text-white mb-12 text-lg">From concept to completion, we create spaces that honor the earth and nurture the soul.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+              <h3 class="text-xl font-medium text-white mb-3">Sustainable Homes</h3>
+              <p class="text-white">Natural materials, passive solar design, and eco-friendly systems that work in harmony with the environment.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-white mb-3">Wellness Spaces</h3>
+              <p class="text-white">Retreats, studios, and healing environments designed to restore and rejuvenate.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-white mb-3">Natural Materials</h3>
+              <p class="text-white">Sourcing and specifying reclaimed wood, natural stone, and sustainable finishes that tell a story.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="fixed inset-0 z-50 hidden bg-black/20 backdrop-blur-sm">
+    <div class="flex items-start justify-end h-screen">
+      <div class="bg-black/60 shadow-2xl w-1/2 h-screen overflow-y-auto modal-slide-right">
+        <div class="p-8">
+          <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-medium text-white">About Govia Design</h2>
+            <button id="aboutClose" class="text-white hover:text-gray-300 text-2xl font-bold" aria-label="Close">✕</button>
+          </div>
+          <p class="text-white mb-12 text-lg">We believe architecture should honor the earth. Our designs celebrate natural materials, passive systems, and sustainable practices — creating spaces that breathe with the land and nurture the spirit.</p>
+          
+          <div class="mb-8">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop" alt="Natural architecture" class="w-full h-96 object-cover rounded-lg"/>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-medium text-white mb-3">Our Philosophy</h3>
+              <p class="text-white">Every design decision is made with the environment in mind. We use locally sourced materials, passive solar design, and sustainable building practices.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-white mb-3">Our Mission</h3>
+              <p class="text-white">To create spaces that not only shelter but inspire, using architecture as a bridge between human needs and natural harmony.</p>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <a href="#contact" class="inline-block bg-white text-black px-6 py-3 text-sm hover:bg-gray-200 transition-colors">Work with us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="fixed inset-0 z-50 hidden bg-black/20 backdrop-blur-sm">
+    <div class="flex items-start justify-end h-screen">
+      <div class="bg-black/60 shadow-2xl w-1/2 h-screen overflow-y-auto modal-slide-right">
+        <div class="p-8">
+          <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-medium text-white">Start a Project</h2>
+            <button id="contactClose" class="text-white hover:text-gray-300 text-2xl font-bold" aria-label="Close">✕</button>
+          </div>
+          <p class="text-white mb-12 text-lg">Share your vision for sustainable living and we'll bring it to life.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 class="text-xl font-medium text-white mb-4">Get in Touch</h3>
+              <div class="space-y-3 text-white">
+                <p>🌱 Based in nature, working worldwide</p>
+                <p>📧 hello@goviadesign.com</p>
+                <p>🕘 Mon–Fri, 9am–5pm</p>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-medium text-white mb-4">Our Process</h3>
+              <p class="text-white">We begin with understanding your vision, then create sustainable designs that honor both your needs and the environment.</p>
+            </div>
+          </div>
+          
+          <form onsubmit="event.preventDefault(); alert('Demo only — connect to email or backend later.');">
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm text-white mb-2">Name</label>
+                <input required class="w-full border border-gray-400 bg-white/10 text-white placeholder-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" placeholder="Your name"/>
+              </div>
+              <div>
+                <label class="block text-sm text-white mb-2">Email</label>
+                <input type="email" required class="w-full border border-gray-400 bg-white/10 text-white placeholder-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" placeholder="you@email.com"/>
+              </div>
+              <div>
+                <label class="block text-sm text-white mb-2">Message</label>
+                <textarea required rows="4" class="w-full border border-gray-400 bg-white/10 text-white placeholder-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" placeholder="Tell us about your sustainable vision..."></textarea>
+              </div>
+              <button class="w-full bg-white text-black px-6 py-3 text-sm hover:bg-gray-200 transition-colors">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Simple Lightbox Modal for portfolio images -->
   <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/70 p-6">
@@ -255,6 +1008,119 @@
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hero title startup animation
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+      // Trigger animation after a short delay
+      setTimeout(() => {
+        heroTitle.classList.add('animate');
+      }, 500);
+    }
+
+    // Services, About, and Contact modals are disabled
+
+    // Scroll animations with direction detection
+    let lastScrollY = window.scrollY;
+    let isScrollingDown = true;
+    let hasAnimated = new Set(); // Track which elements have already animated
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Check if element is in hero section (should have bidirectional animation)
+          const isHeroElement = entry.target.closest('#hero') || 
+                                entry.target.classList.contains('hero-animate');
+          
+          if (isHeroElement) {
+            // Hero elements get bidirectional animation
+            entry.target.classList.remove('visible', 'visible-up', 'scroll-up');
+            if (isScrollingDown) {
+              entry.target.classList.add('visible');
+            } else {
+              entry.target.classList.add('visible-up');
+              entry.target.classList.add('scroll-up');
+            }
+          } else {
+            // Project images only animate once on first scroll down
+            if (isScrollingDown && !hasAnimated.has(entry.target)) {
+              entry.target.classList.remove('visible', 'visible-up', 'scroll-up');
+              entry.target.classList.add('visible');
+              hasAnimated.add(entry.target);
+            }
+          }
+        } else {
+          // Only reset hero elements when they go out of view
+          const isHeroElement = entry.target.closest('#hero') || 
+                                entry.target.classList.contains('hero-animate');
+          if (isHeroElement) {
+            entry.target.classList.remove('visible', 'visible-up', 'scroll-up');
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Track scroll direction
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      isScrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+    });
+
+    // Observe all elements with scroll animation classes
+    document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Projects title scroll animation
+    const projectsTitle = document.querySelector('.about-title');
+    let projectsAnimated = false;
+    let projectsAnimatedUp = false;
+    let projectsVisible = false;
+
+    const projectsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Remove any existing animation classes
+          projectsTitle.classList.remove('animate', 'animate-up', 'animate-reverse');
+          
+          // Add animation based on scroll direction
+          if (isScrollingDown) {
+            projectsTitle.classList.add('animate');
+            projectsAnimated = true;
+            projectsAnimatedUp = false;
+            projectsVisible = true;
+          } else {
+            // Only animate reverse if we're scrolling up and the text is visible
+            if (projectsVisible) {
+              projectsTitle.classList.add('animate-reverse');
+              projectsAnimated = true;
+              projectsAnimatedUp = false;
+            }
+          }
+        } else {
+          // When going out of view while scrolling up, animate up
+          if (projectsAnimated && !projectsAnimatedUp && !isScrollingDown && projectsVisible) {
+            projectsTitle.classList.remove('animate', 'animate-reverse');
+            projectsTitle.classList.add('animate-up');
+            projectsAnimatedUp = true;
+            projectsVisible = false;
+          }
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    if (projectsTitle) {
+      projectsObserver.observe(projectsTitle);
+    }
 
     // Lightbox logic
     const lightbox = document.getElementById('lightbox');
@@ -272,7 +1138,114 @@
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) lightbox.classList.add('hidden');
     });
+    
+    // Header scroll animation
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down - hide header
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        // Scrolling up - show header
+        header.style.transform = 'translateY(0)';
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // Initialize Lenis Smooth Scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Update scroll direction for animations
+    lenis.on('scroll', (e) => {
+      const currentScrollY = e.scroll;
+      isScrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+    });
+
+    // Project images slide-down animation based on scroll progress
+    const projectImages = document.querySelectorAll('.project-img');
+    let projectImagesAnimated = new Set();
+
+    // Function to check scroll progress and animate images
+    function animateProjectImages() {
+      const projectsSection = document.querySelector('#work');
+      if (!projectsSection) return;
+
+      const sectionTop = projectsSection.offsetTop;
+      const sectionHeight = projectsSection.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+
+      // Calculate how far into the projects section we are
+      const scrollProgress = Math.max(0, Math.min(1, (scrollY - sectionTop + windowHeight) / sectionHeight));
+
+      projectImages.forEach((img, index) => {
+        // Calculate when this image should animate based on its position
+        const imgRect = img.getBoundingClientRect();
+        const imgProgress = Math.max(0, Math.min(1, (windowHeight - imgRect.top) / windowHeight));
+        
+        // Animate when the image is 30% into view
+        if (imgProgress > 0.3 && !projectImagesAnimated.has(img)) {
+          img.classList.add('animate');
+          projectImagesAnimated.add(img);
+        }
+      });
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', animateProjectImages);
+    
+    // Also use Intersection Observer as backup
+    const projectImageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !projectImagesAnimated.has(entry.target)) {
+          entry.target.classList.add('animate');
+          projectImagesAnimated.add(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    projectImages.forEach(img => {
+      projectImageObserver.observe(img);
+    });
+
+    // Smooth scroll for Work link
+    document.querySelector('a[href="#work"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      const projectsTitle = document.querySelector('.about-title');
+      if (projectsTitle) {
+        lenis.scrollTo(projectsTitle, {
+          duration: 1.5,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          offset: -50 // Offset to position the text lower down
+        });
+      }
+    });
   </script>
 </body>
 </html>
-<-m pip install -r requirements.txt rebuild -->
